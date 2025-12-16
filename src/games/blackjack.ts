@@ -154,6 +154,7 @@ export class Game {
         this.stage = Stage.DEAL;
         if (this.players.length == 0) {
             this.stage = Stage.CONCLUSION;
+            if (this.options.autoConclude) this.conclude();
             return;
         }
 
@@ -165,6 +166,7 @@ export class Game {
         this.dealerHand = new Hand([this.deck.getCard(), this.deck.getCard()]);
         if (this.dealerHand.value() == 21) {
             this.stage = Stage.CONCLUSION;
+            if (this.options.autoConclude) this.conclude();
             return;
         }
         
