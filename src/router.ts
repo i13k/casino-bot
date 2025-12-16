@@ -56,7 +56,7 @@ export const route = async (interaction: Interaction, gameMapMap: GameMapMap, us
                 await SetBalanceCommand.execute(interaction, usersInGame);
             else if (interaction.commandName == "ranking")
                 await BalanceRankingCommmand.execute(interaction);
-            else if (interaction.commandName == "clear")
+            else if (interaction.commandName == "payout")
                 await BalanceClearCommand.execute(interaction);
             else if (interaction.commandName == "transfer")
                 await TransferCommand.execute(interaction, usersInGame);
