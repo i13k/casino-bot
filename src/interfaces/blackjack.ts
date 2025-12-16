@@ -3,6 +3,7 @@ import { getBalance, setBalance, setBalances } from "../bank";
 import { Player, Action, Game, Stage } from "../games/blackjack";
 import { AnyGame } from "../map";
 import { getString, errorString } from "../strings";
+import { FACE_UNKNOWN, SUIT_UNKNOWN } from "../cards";
 
 export const GAME_KEY = "bj";
 
@@ -40,7 +41,7 @@ const renderGame = (game: Game): ContainerBuilder[] => {
             gameInfo = getString("ui.dealerHand") + "\n- ";
             const hideDealerSecondCard = ![Stage.DEALER_GAME, Stage.CONCLUSION, Stage.END].includes(game.stage);
             for (let i = 0; i < game.dealerHand.content.length; i++) {
-                if (i == 1 && hideDealerSecondCard) gameInfo += "<:bjSuitUnknown:1443250819397980200><:bjFaceUnknown:1442897972080939170> ";
+                if (i == 1 && hideDealerSecondCard) gameInfo += SUIT_UNKNOWN + FACE_UNKNOWN + " ";
                 else gameInfo += `${game.dealerHand.content[i].serializeAsEmoji()} `;
             }
             if (!hideDealerSecondCard) gameInfo += ` =  \` ${game.dealerHand.value()} \``;

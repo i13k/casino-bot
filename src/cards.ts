@@ -10,6 +10,9 @@ export enum Value {
     EIGHT = 8, NINE = 9, TEN = 10, JACK = 11, QUEEN = 12, KING = 13
 };
 
+export const FACE_UNKNOWN = "<:bjFaceUnknown:1442897972080939170>";
+export const SUIT_UNKNOWN = "<:bjSuitUnknown:1443250819397980200>";
+
 export class Card {
     value: Value;
     suit: Suit;

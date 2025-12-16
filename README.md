@@ -7,6 +7,7 @@ Bot ten umożliwia granie w gry kasynowe na platformie Discord. Obecnie jest to 
 4. `node dist/updateCommands`
 5. `node dist/main`
 W pliku `bank.db` tworzona jest baza stanów kont graczy. Każdy gracz zaczyna mając $1000. Jeśli bot jest instalowany na wielu serwerach, stany kont są globalne (współdzielone przez graczy między serwerami).
+Aby mogły wyświetlać się obrazki kart do gry, bot musi znajdować się w serwerze, w którym pod odpowiednimi nazwami zostały przesłane emoji z folderu `img`. Następnie należy ustawić ID tych emoji w pliku `src/cards.ts`.
 
 ## Konfiguracja
 Przykład pliku `config.ts`:
