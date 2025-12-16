@@ -74,7 +74,7 @@ export const route = async (interaction: Interaction, gameMapMap: GameMapMap, us
         let id = buttonInteraction.customId;
 
         if (id.startsWith("a-")) {
-            if (!(interaction.member!.roles as GuildMemberRoleManager).cache.some(role => role.name === Config.DEALER_ROLE)) {
+            if (!(interaction.member!.roles as GuildMemberRoleManager).cache.some(role => role.id === Config.DEALER_ROLE)) {
                 await buttonInteraction.reply({ content: errorString("D-01"), flags: MessageFlags.Ephemeral });
                 return;
             }
