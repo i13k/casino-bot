@@ -18,6 +18,11 @@ export const TransferCommand = {
             return;
         }
 
+        if (userId == interaction.user.id) {
+            await interaction.reply({ content: errorString("D-05"), flags: MessageFlags.Ephemeral });
+            return;
+        }
+
         if (!transfer(interaction.user.id, userId, amount, description))
             await interaction.reply({ content: errorString("D-06"), flags: MessageFlags.Ephemeral });
         else
