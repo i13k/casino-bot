@@ -1,6 +1,6 @@
-import { ButtonInteraction, ModalBuilder, LabelBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ModalSubmitInteraction, MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction, TextChannel, ContainerBuilder, ButtonBuilder, ButtonStyle } from "discord.js";
+import { ButtonInteraction, ModalBuilder, LabelBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ModalSubmitInteraction, MessageFlags, SlashCommandBuilder, ChatInputCommandInteraction, TextChannel, ContainerBuilder, ButtonBuilder, ButtonStyle, managerToFetchingStrategyOptions } from "discord.js";
 import { getBalance, setBalance, setBalances } from "../bank";
-import { Stage, Game, Player, Bet, BetType, isRed, isBlack } from "../games/roulette";
+import { Stage, Game, Player, Bet, BetType, LayoutType, isRed, isBlack } from "../games/roulette";
 import { AnyGame } from "../map";
 import { getString, errorString } from "../strings";
 
@@ -330,7 +330,7 @@ export const routeModalInteraction = async (id: string, interaction: ModalSubmit
         }
         game.unbet(index, betIndex - 1);
     } else if (id == "m-enternum") {
-        const resultString = interaction.fields.getTextInputValue("ti-num");
+        /*const resultString = interaction.fields.getTextInputValue("ti-num");
         let result;
         if (resultString == "00") {
             result = -1;
@@ -343,8 +343,14 @@ export const routeModalInteraction = async (id: string, interaction: ModalSubmit
                 await interaction.reply({ content: errorString("D-05"), flags: MessageFlags.Ephemeral });
                 return;
             }
+        }*/
+        if (game.layout == LayoutType.DOUBLE_ZERO) {
+            const result = Math.floor(Math.random() * 38) - 1;
+            game.enterNumber(result);
+        } else if (game.layout == LayoutType.SINGLE_ZERO) {
+            const result = Math.floor(Math.random() * 37);
+            game.enterNumber(result);
         }
-        game.enterNumber(result);
     } else if (id == "m-betout") {
         const betTypeString = interaction.fields.getStringSelectValues("s-betType")[0];
         const betString = interaction.fields.getTextInputValue("ti-bet");

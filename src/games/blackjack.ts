@@ -48,12 +48,11 @@ class Hand {
                 }
             }
         }
+        value += aces;
         for (let i = 0; i < aces; i++) {
-            if (value < 11) {
-                value += 11;
+            if (value < 12) {
+                value += 10;
                 isSoft = true;
-            } else {
-                value += 1;
             }
         }
         return { value, isSoft };
