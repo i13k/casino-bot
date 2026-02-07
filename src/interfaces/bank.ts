@@ -12,8 +12,8 @@ const padTo2Zeros = (s: string): string => (s.length == 2) ? s : ("0" + s);
 
 const formatDate = (d: Date): string => {
     let result = padTo2Zeros(d.getDay().toString());
-    result += "." + padTo2Zeros(d.getMonth().toString());
-    result += "." + padTo2Zeros(d.getFullYear().toString());
+    result += "." + padTo2Zeros((d.getMonth() + 1).toString());
+    result += "." + d.getFullYear().toString();
     result += " " + padTo2Zeros(d.getHours().toString());
     result += ":" + padTo2Zeros(d.getMinutes().toString());
     result += ":" + padTo2Zeros(d.getSeconds().toString());
